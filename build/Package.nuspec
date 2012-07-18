@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Orchard.Routing</id>
+    <version>1.0.0.1</version>
+    <authors>Ben Keeping</authors>
+    <owners>Ben Keeping</owners>
+    <projectUrl>https://github.com/benjaminkeeping/Orchard.Routing</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Register routes using attributes on your controller actions for Orchard</description>
+    <releaseNotes>init</releaseNotes>
+    <copyright>Copyright benkeeping 2012</copyright>
+    <tags>Orchard Routing MVC</tags>
+  </metadata>
+</package>

@@ -1,0 +1,59 @@
+This dll takes some of the pain away from registering routes in Orchard (ie by implementing IRouteProvider and manually adding in all the routes)
+It's on Nuget as "Orchard.Routing"
+
+So instead of registering routes using an implementation of IRouteProvider
+and manually having to building RouteDescriptors etc,
+you can just implement OrchardRouteProvider like so : 
+
+    public class Routes : OrchardRouteProvider
+    {
+        public override string AreaName
+        {
+            get { return "Acme.Reports"; } // the name of your Orchard Module - ie the MVC Area
+        }
+    }
+
+It then autoregisters your controller routes, according to how you've tagged them (see below)
+
+And then tag your controllers : 
+
+public class FooController : Controller 
+{
+	[Get("foo/{someParam}/bar")]
+	public ActionResult Bar(string someParam) {
+		// whatever
+	}
+}
+
+There are attributes for Get, Post, Put, Patch and Delete
+The attributes behave like the normal HttpGet, HttpPost (etc) attributes - ie if you tag an action as Get(), then you can't post to it
+
+You can use them in conjunction with the normal Http* attributes, for example :
+
+public class FooController : Controller 
+{
+	[Get("foo/new")]
+	public ActionResult New() {
+		// whatever
+	}
+
+	[HttpPost]
+	public ActionResult Create(Bar bar) {
+		// whatever
+	}
+}
+
+If you don't use the HttpGet / HttpPost attributes for your actions, you can still register routes like so :
+
+public class FooController : Controller 
+{
+	[Route("foo/{id}")]
+	public ActionResult View(Guid id) {
+		// whatever
+	}
+
+	[Route("foos")]
+	public ActionResult List() {
+		// whatever
+	}	
+}

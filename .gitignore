@@ -1,0 +1,10 @@
+src/_ReSharper.Orchard.Routing
+src/Orchard.Routing/bin
+src/Orchard.Routing/obj
+src/Orchard.Routing.suo
+build/build_log.txt
+build/lib
+deploy
+src/Orchard.Routing.Specs/bin
+src/Orchard.Routing.Specs/obj
+src/Orchard.Routing.6.0.ReSharper.user
