@@ -9,20 +9,23 @@ namespace Orchard.Routing
 {
     public abstract class OrchardRouteProvider : IRouteProvider
     {
+        static RouteDescriptor[] Routes;
         public abstract string AreaName { get; }
 
         public IEnumerable<RouteDescriptor> GetRoutes()
         {
-            return MvcRouting.GetRoutes(GetType().Assembly).Select(route => new RouteDescriptor
+            return Routes ?? (Routes = MvcRouting.GetRoutes(GetType().Assembly).Select(route => new RouteDescriptor
             {
                 Route = new Route(route.Route, new RouteValueDictionary
                 {
-                    {"area", AreaName}, {"controller", route.ControllerName}, {"action", route.ActionName}
+                    {"area", AreaName},
+                    {"controller", route.ControllerName},
+                    {"action", route.ActionName}
                 }, new RouteValueDictionary(), new RouteValueDictionary
                 {
                     {"area", AreaName}
                 }, new MvcRouteHandler())
-            }).ToList();
+            }).ToArray());
         }
 
         public void GetRoutes(ICollection<RouteDescriptor> routes)
