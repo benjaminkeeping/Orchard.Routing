@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Orchard.Routing</id>
-    <version>1.0.0.1</version>
+    <version>1.0.0.2</version>
     <authors>Ben Keeping</authors>
     <owners>Ben Keeping</owners>
     <projectUrl>https://github.com/benjaminkeeping/Orchard.Routing</projectUrl>
